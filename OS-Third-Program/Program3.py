@@ -80,3 +80,4 @@ for entry in priority_scheduling(processes):
 print("\nRound Robin (quantum=2):")
 for entry in round_robin(processes, quantum=2):
     print(entry)
+    
