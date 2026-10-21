@@ -4,24 +4,17 @@ task=[
     ("task1",2),
     ("task2",3),
     ("task3",1)
+
 ]
 def do_task(task_name, wait_time):
-    print(f"{task_name} started, will take {wait_time} seconds.")
+    thread_id = threading.get_ident()
+    print(f"{task_name} STARTED | Thread ID = {thread_id}")
     time.sleep(wait_time)
 
-    print(f"{task_name} completed.")
-
-threads = []
-for task_name, wait_time in task:
-    t = threading.Thread(target=do_task, args=(task_name, wait_time))
-    threads.append(t)
-    t.start()
-
-for t in threads:
-    t.join()
+    print(f"{task_name} FINISHED | Thread ID = {thread_id}")
 
 def single_threaded():
-        print("\n---Single Threaded Demo---")
+        print("\n---Single Threaded---")
         start_time = time.perf_counter()
 
         for task_name, wait_time in task:
@@ -35,7 +28,7 @@ def single_threaded():
         return elapsed_time
 
 def multithreaded():
-        print("\n---Multithreaded Demo---")
+        print("\n---Multithreaded---")
         start_time = time.perf_counter()
         threads = []
 
